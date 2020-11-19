@@ -221,19 +221,17 @@ class Spaceship extends Floater
 }
 class Starfield //note that this class does NOT extend Floater
 {  
-     double myX;
+     protected double myX;
 
-     double myY;
+     protected double myY;
 
-    double myAngle;
+    protected double myAngle;
 
-    double mySpeed;
+    protected double mySpeed;
 
-    ouble mySize; 
+    protected int random; 
 
-    int random; 
-
-    Starfield(x,y)
+    public Starfield(x,y)
 
     {
 
@@ -249,7 +247,7 @@ class Starfield //note that this class does NOT extend Floater
 
     }
 
-    void show()
+    public void show()
 
     {
 
@@ -263,7 +261,7 @@ class Starfield //note that this class does NOT extend Floater
 
     }
 
-    void move()
+    public void move()
 
     {
 
