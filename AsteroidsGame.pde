@@ -20,7 +20,7 @@ public void draw()
     background(0);
     bob.show();
     bob.move();
-    for(int m = 0; m<11; m++)
+    for(int m = 0; m<theList.size(); m++)
     {
     theList.get(m).show();
     theList.get(m).move();
@@ -230,7 +230,15 @@ class Spaceship extends Floater
         myCenterY = (int)(Math.random()*500);
         myPointDirection = (int)(Math.random()*360);
         myXspeed = 0;
-        myYspeed = 0;
+        myYspeed = 0;s
+    }
+    public int getX()
+    {
+        return (int)myCenterX;
+    } 
+    public int getY()
+    {
+        return (int)myCenterY;
     }
 }
 public class Starfield //note that this class does NOT extend Floater
@@ -384,4 +392,3 @@ public class Starfield //note that this class does NOT extend Floater
         super.move();
     }
 }
-
