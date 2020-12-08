@@ -1,4 +1,9 @@
 Spaceship bob = new Spaceship();
+ArryayList <Asteroid> theList = new ArrayList <Asteroid>();
+for(int j = 0; j<11; j++)
+{
+    theList.add(j, new Asteroid());
+}
 Starfield[]star = new Starfield[100];
 double x = 250;
 double y = 250;
@@ -15,6 +20,15 @@ public void draw()
     background(0);
     bob.show();
     bob.move();
+    for(int m = 0; m<11; m++)
+    {
+    theList.get(m).show();
+    theList.get(m).move();
+    if(dist(bob.getX(), bob.getY(), theList.get(m).getX(), theList.get(m).getY()) <= 20)
+        {
+        theList.remove(m);
+        }
+    }
     for(int i = 0; i < star.length; i++)
          {         
              star[i].show();
@@ -219,17 +233,17 @@ class Spaceship extends Floater
         myYspeed = 0;
     }
 }
-class Starfield //note that this class does NOT extend Floater
+public class Starfield //note that this class does NOT extend Floater
 {  
-     protected double myX;
+     private double myX;
 
-     protected double myY;
+     private double myY;
 
-    protected double myAngle;
+    private double myAngle;
 
-    protected double mySpeed;
+    private double mySpeed;
 
-    protected int random; 
+    private int random; 
 
     public Starfield(x,y)
 
@@ -308,5 +322,66 @@ class Starfield //note that this class does NOT extend Floater
     }       
 
 }
-
+ public class Asteroid extends Floater
+{
+    private double rotSpeed();
+    public Asteroid()
+    {
+        corners = 12;
+        xCorners = new int[corners];
+        yCorners = new int[corners];
+        xCorners[0] = -2;
+        yCorners[0] = -12;
+        xCorners[1] = -14;
+        yCorners[1] = -18;
+        xCorners[2] = -10;
+        yCorners[2] = -8;
+        xCorners[3] = -20;
+        yCorners[3] = 12;
+        xCorners[4] = -6;
+        yCorners[4] = 6;
+        xCorners[5] = -6;
+        yCorners[5] = 22;
+        xCorners[6] = -1;
+        yCorners[6] = 12;
+        xCorners[7] = 16;
+        yCorners[7] = 16;
+        xCorners[8] = 8;
+        yCorners[8] = 2;
+        xCorners[9] = 20;
+        yCorners[9] = -10;
+        xCorners[10] = 10;
+        yCorners[10] = -12;
+        xCorners[11] = 14;
+        yCorners[11] = -26;
+        myCenterX = (int)(Math.random()*500);
+        myCenterY = (int)(Math.random()*500);
+        myXspeed = (int)(Math.random()*2)+1; 
+        myYspeed = (int)(Math.random()*2)+1;
+        myColor = color(102, 51, 0);
+        myPointDirection = (int)(Math.random()*360);
+        rotSpeed = (int)(Math.random()*3)+1;       
+    }   
+    public int getX()
+    {
+        return (int)myCenterX;
+    } 
+    public int getY()
+    {
+        return (int)myCenterY;
+    }
+    public void setX(double x)
+    {
+        myCenterX = x;
+    }
+    public void setY(double y)
+    {
+        myCenterY = y;
+    }
+    public void move()
+    {
+        turn(rotSpeed);
+        super.move();
+    }
+}
 
